@@ -11,7 +11,9 @@ fn-env-gen-enabled(){
 
    [[ -z $(config_get "$APP" DOKKU_ENV_GEN) ]] && config_set "$APP" DOKKU_ENV_GEN=false
 
-   if [[ -f "$(config_get "$APP" "DOKKU_ENV_GEN")" == "true" ]]; then
+   envValue=$(config_get "$APP" "DOKKU_ENV_GEN")
+
+   if [[ envValue == "true" ]]; then
     enabled=true
    fi
 
