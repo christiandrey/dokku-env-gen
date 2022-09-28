@@ -1,0 +1,4 @@
+[plugin]
+description = "dokku env file generator"
+version = "0.1.0"
+[plugin.config]

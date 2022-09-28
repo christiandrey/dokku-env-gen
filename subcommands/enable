@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+source "$PLUGIN_AVAILABLE_PATH/env-gen/command-functions"
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+cmd-env-gen-enable "$@"

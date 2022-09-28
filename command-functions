@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
+source "$PLUGIN_AVAILABLE_PATH/config/functions"
+source "$PLUGIN_AVAILABLE_PATH/env-gen/internal-functions"
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+cmd-env-gen-enable(){
+   declare desc="enables env file generation for an app"
+   declare cmd="env-gen:enable"
+   declare APP="$1"
+
+   dokku_log_info1 "Enabling env-gen for $APP..."
+   config_set "$APP" DOKKU_ENV_GEN=true
+   dokku_log_verbose "Done"
+}
+
+cmd-env-gen-disable(){
+   declare desc="disables env file generation for an app"
+   declare cmd="env-gen:disable"
+   declare APP="$1"
+
+   dokku_log_info1 "Disabling env-gen for $APP..."
+   config_set "$APP" DOKKU_ENV_GEN=false
+   dokku_log_verbose "Done"
+}

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+source "$PLUGIN_AVAILABLE_PATH/config/functions"
+
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
+fn-env-gen-enabled(){
+   declare desc="check if an app has env-gen enabled"
+   declare APP="$1"
+   local enabled=false
+
+   [[ -z $(config_get "$APP" DOKKU_ENV_GEN) ]] && config_set "$APP" DOKKU_ENV_GEN=false
+
+   if [[ -f "$(config_get "$APP" "DOKKU_ENV_GEN")" == "true" ]]; then
+    enabled=true
+   fi
+
+   echo "$enabled"
+}
