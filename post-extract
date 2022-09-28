@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
+set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
+
 source "$PLUGIN_CORE_AVAILABLE_PATH/common/functions"
 source "$PLUGIN_AVAILABLE_PATH/config/functions"
 source "$PLUGIN_AVAILABLE_PATH/env-gen/internal-functions"
-
-set -eo pipefail; [[ $DOKKU_TRACE ]] && set -x
 
 trigger-env-gen-post-extract(){
    declare desc="copies environment variables into an env file"
