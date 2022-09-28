@@ -13,7 +13,7 @@ cmd-env-gen-enable(){
    declare APP="$1"
 
    dokku_log_info1 "Enabling env-gen for $APP..."
-   config_set "$APP" DOKKU_ENV_GEN=true
+   config_set "$APP" DOKKU_ENV_GEN=true --no-restart
    dokku_log_verbose "Done"
 }
 
@@ -24,6 +24,6 @@ cmd-env-gen-disable(){
    declare APP="$1"
 
    dokku_log_info1 "Disabling env-gen for $APP..."
-   config_set "$APP" DOKKU_ENV_GEN=false
+   config_set "$APP" DOKKU_ENV_GEN=false --no-restart
    dokku_log_verbose "Done"
 }
