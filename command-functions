@@ -9,6 +9,7 @@ source "$PLUGIN_AVAILABLE_PATH/env-gen/internal-functions"
 cmd-env-gen-enable(){
    declare desc="enables env file generation for an app"
    declare cmd="env-gen:enable"
+   [[ "$1" == "$cmd" ]] && shift 1
    declare APP="$1"
 
    dokku_log_info1 "Enabling env-gen for $APP..."
@@ -19,6 +20,7 @@ cmd-env-gen-enable(){
 cmd-env-gen-disable(){
    declare desc="disables env file generation for an app"
    declare cmd="env-gen:disable"
+   [[ "$1" == "$cmd" ]] && shift 1
    declare APP="$1"
 
    dokku_log_info1 "Disabling env-gen for $APP..."
